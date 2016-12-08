@@ -368,9 +368,10 @@ public class mainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         Aligner align = null;
         outputFrame out;
-        loadFastaInput();
-        if(sequences.size() > 2){
-            JOptionPane.showMessageDialog(new JFrame(), "More than 2 sequences");
+        if(!loadFastaInput()){
+            JOptionPane.showMessageDialog(new JFrame(), "Invalid Fasta input");
+        } else if(sequences.size() > 2 || sequences.size() < 2){
+            JOptionPane.showMessageDialog(new JFrame(), "Must input 2 sequences (only)");
         } else if (Integer.valueOf(mismatchField.getText()) > Integer.valueOf(matchField.getText())){
             JOptionPane.showMessageDialog(new JFrame(), "Mismatch value should be < than match value");
         } else {
